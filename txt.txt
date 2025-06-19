@@ -1,0 +1,3 @@
+npm init -y
+npm install express pg sequelize jsonwebtoken bcrypt dotenv cors body-parser
+npm i nodemon -d
