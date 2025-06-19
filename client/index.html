@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Грузовозофф - Главная</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Грузовозофф</h1>
+                <p>Надёжные грузоперевозки</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Главная</a></li>
+                    <li><a href="auth.html">Вход</a></li>
+                    <li><a href="register.html">Регистрация</a></li>
+                    <li id="admin-link" style="display:none;"><a href="admin-login.html">Админ-панель</a></li>
+                    <li id="my-requests-link" style="display:none;"><a href="my-requests.html">Мои заявки</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Быстрая и безопасная доставка грузов</h2>
+                <p>Оставьте заявку и получите лучшее предложение</p>
+                <a href="create-order.html" class="btn" id="create-order-btn">Создать заявку</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2>Наши преимущества</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Безопасность</h3>
+                        <p>Гарантия сохранности вашего груза</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        <h3>Скорость</h3>
+                        <p>Оперативная доставка в срок</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-ruble-sign"></i>
+                        <h3>Цены</h3>
+                        <p>Доступные тарифы без скрытых платежей</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="vehicles">
+            <div class="container">
+                <h2>Наш автопарк</h2>
+                <div class="vehicles-slider">
+                    <div class="vehicle">
+                        <img src="img/truck1.jpg" alt="Грузовик" class="animated-truck">
+                        <h3>Газель</h3>
+                        <p>До 1.5 тонн, 8 м³</p>
+                    </div>
+                    <div class="vehicle">
+                        <img src="img/truck2.jpg" alt="Грузовик" class="animated-truck">
+                        <h3>Камаз</h3>
+                        <p>До 10 тонн, 36 м³</p>
+                    </div>
+                    <div class="vehicle">
+                        <img src="img/truck3.jpg" alt="Грузовик" class="animated-truck">
+                        <h3>Фура</h3>
+                        <p>До 20 тонн, 82 м³</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Грузовозофф. Все права защищены.</p>
+            <div class="contacts">
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Проверяем авторизацию при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('token');
+            const adminToken = localStorage.getItem('adminToken');
+            
+            if (token) {
+                document.getElementById('my-requests-link').style.display = 'block';
+                document.getElementById('create-order-btn').style.display = 'inline-block';
+            }
+            
+            if (adminToken) {
+                document.getElementById('admin-link').style.display = 'block';
+            }
+        });
+    </script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

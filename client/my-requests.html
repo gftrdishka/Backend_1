@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Грузовозофф - Мои заявки</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Грузовозофф</h1>
+                <p>Мои заявки</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="create-order.html" class="active">Создать заявку</a></li>
+                    <li><a href="#" id="logoutBtn">Выйти</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h2>Мои заявки</h2>
+                <a href="create-order.html" class="btn">
+                    <i class="fas fa-plus"></i> Новая заявка
+                </a>
+            </div>
+
+            <div id="userRequests" class="requests-list">
+                <!-- Здесь будут загружаться заявки через JavaScript -->
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i> Загрузка заявок...
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Грузовозофф. Все права защищены.</p>
+            <div class="contacts">
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Подключаем скрипты -->
+    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/requests.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
