@@ -1,0 +1,140 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-06-19T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "wrk_1",
+      "name": "Gruzovik API",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_1",
+      "parentId": "wrk_1",
+      "_type": "environment",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:5000/api"
+      }
+    },
+    {
+      "_id": "req_register",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Регистрация",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/register",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"login\": \"тестлогин\",\n  \"password\": \"123456\",\n  \"fullName\": \"Иван Иванов\",\n  \"phone\": \"+7(999)-123-45-67\",\n  \"email\": \"ivan@test.ru\"\n}"
+      }
+    },
+    {
+      "_id": "req_login",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Логин пользователя",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"login\": \"тестлогин\",\n  \"password\": \"123456\"\n}"
+      }
+    },
+    {
+      "_id": "req_admin_login",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Логин администратора",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/admin-login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"login\": \"admin\",\n  \"password\": \"gruzovik2024\"\n}"
+      }
+    },
+    {
+      "_id": "req_create_request",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Создание заявки",
+      "method": "POST",
+      "url": "{{ base_url }}/requests",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ user_token }}"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"transportDateTime\": \"2025-06-20T10:00:00\",\n  \"cargoWeight\": 120.5,\n  \"cargoDimensions\": \"100x50x40\",\n  \"fromAddress\": \"Москва, ул. Ленина, 10\",\n  \"toAddress\": \"Санкт-Петербург, Невский пр., 20\",\n  \"cargoType\": \"мебель\"\n}"
+      }
+    },
+    {
+      "_id": "req_my_requests",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Мои заявки",
+      "method": "GET",
+      "url": "{{ base_url }}/requests",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ user_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_leave_feedback",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Оставить отзыв (id заявки)",
+      "method": "POST",
+      "url": "{{ base_url }}/requests/1/feedback",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ user_token }}"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"feedback\": \"Всё было отлично, спасибо!\"\n}"
+      }
+    },
+    {
+      "_id": "req_admin_all",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Все заявки (админ)",
+      "method": "GET",
+      "url": "{{ base_url }}/admin/requests?page=1&limit=10",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ admin_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_admin_update_status",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Обновить статус заявки (админ)",
+      "method": "PATCH",
+      "url": "{{ base_url }}/admin/requests/1/status",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ admin_token }}"
+        }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"status\": \"В работе\"\n}"
+      }
+    }
+  ]
+}
